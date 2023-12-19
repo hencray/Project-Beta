@@ -1,3 +1,4 @@
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 function Nav() {
@@ -10,22 +11,24 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers">list manufacturers</NavLink>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/manufacturers">List Manufacturers</NavLink>
             </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/manufacturers/create">create manufacturer</NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/models">list models</NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/models/create">create models</NavLink>
-            <NavLink className="nav-link" to="/automobiles/create">create automobile</NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/automobiles">List automobiles</NavLink>
-          </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/manufacturers/create">Create Manufacturer</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/models">List Models</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/models/create">List Models</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/automobiles/create">Create Automobile</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/automobiles">List Automobiles</NavLink>
+            </li>
           </ul>
         </div>
       </div>
