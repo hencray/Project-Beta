@@ -1,36 +1,60 @@
-import { useEffect, useState } from "react";
+import React from 'react';
+import { Link } from 'react-router-dom'
+import {useEffect, useState} from "react"
 
 function ListAutomobile() {
-    const [automobile, setAutomobile] = useState([])
-    const fetchData = async () => {
-        const response = await fetch('http://localhost:8100/api/automobiles/');
-    if (response.ok) {
-      const data = await response.json();
-      setAutomobile(data.automobile);
-  } else {
-    console.error(response);
-  }}
-  useEffect(() => {
-    fetchData();
-  }, []);
+    const [autos, setAutos] = useState([]);
 
-  return(
-    <table className="table table-striped">
-        <thead>
-            <tr>
-            <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            {automobile.map(automobile=> {
-            return(<tr key={automobile.id}>
-                <td>{automobile.name}</td>
-            </tr>
-            )})}
-        </tbody>
+    useEffect(() => {
+            fetch('http://localhost:8100/api/automobiles/')
+                .then(response => response.json())
+                .then(data => {
+                    setAutos(data.autos);
+                })
+                .catch(e => console.error('error: ', e));
+        }, [])
 
-</table>
-  )
-}
 
-export default ListAutomobile;
+
+
+        return (
+          <>
+          <div>
+            <h1 className="text-center large-heading">
+              Automobiles
+            </h1>
+          </div>
+          <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <table className="table table-bordered small-heading">
+              <thead>
+                <tr>
+                  <th>Vin</th>
+                  <th>Year</th>
+                  <th>Color</th>
+                  <th>Model</th>
+                  <th>Manufacturer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {autos.map(auto => {
+                  return (
+                    <tr key={auto.id}>
+                      <td>{auto.vin}</td>
+                      <td>{auto.year}</td>
+                      <td>{auto.color}</td>
+                      <td>{auto.model.name}</td>
+                      <td>{auto.model.manufacturer.name}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <Link to ="/automobiles/create" className="btn btn-dark btn-lg px-4 gap-3">Create Automobile</Link>
+          </div>
+            </>
+          );
+        }
+
+        export default ListAutomobile;
