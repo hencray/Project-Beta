@@ -4,12 +4,12 @@ from .models import SalesPerson, Customer, Sale
 # Register your models here.
 @admin.register(SalesPerson)
 class SalesPersonAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["first_name", "last_name", "employee_id"]
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["first_name", "last_name", "phone_number", "address"]
 
 @admin.register(Sale)
 class SaleAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["automobile", "customer", "salesperson", "price"]

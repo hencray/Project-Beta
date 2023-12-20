@@ -22,6 +22,9 @@ class AutomobileVO(models.Model):
     vin = models.CharField(max_length=17, unique=True)
     sold = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.vin
+
 class Sale(models.Model):
     salesperson = models.ForeignKey(
         SalesPerson,
@@ -41,4 +44,4 @@ class Sale(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return str(self.salesperson)
+        return str(self.customer)
