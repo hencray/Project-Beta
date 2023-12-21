@@ -208,7 +208,7 @@ def api_list_sales(request):
 
 # TODO: deleta a specific sale
 @require_http_methods(['GET', 'DELETE'])
-def api_customer_detail(request, id):
+def api_sales_detail(request, id):
     if request.method == 'GET':
         try:
             sale = Sale.objects.get(id=id)

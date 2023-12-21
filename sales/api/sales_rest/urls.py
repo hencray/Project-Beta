@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import api_list_salespeople, api_sales_person_detail, api_list_customers, api_customer_details, api_list_sales, api_customer_detail
+from .views import api_list_salespeople, api_sales_person_detail, api_list_customers, api_customer_details, api_list_sales, api_sales_detail
 
 urlpatterns = [
     path(
@@ -22,5 +22,5 @@ urlpatterns = [
         'sales/', 
         api_list_sales, 
         name="api_list_sales"),
-    path('sales/<int:id>/', api_customer_detail, name="api_customer_detail")
+    path('sales/<int:id>/', api_sales_detail, name="api_sales_detail")
 ]
