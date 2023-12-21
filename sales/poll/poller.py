@@ -18,10 +18,10 @@ def get_automobiles():
     response = requests.get("http://inventory-api:8000/api/automobiles/")
     print('Response Status Code:', response.status_code)
 
-    try:
-        content = json.loads(response.content)
-    except ValueError as ve:
-        print('Error parsing JSON:', ve)
+    if response.status_code == 404:
+        print("Error 404")
+
+    content = json.loads(response.content)
     print('Response Content:', content)
     
     if "autos" in content:
