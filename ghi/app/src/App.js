@@ -11,7 +11,6 @@ import Technician_list from './Technician_list'
 import Create_Technician from './Create_Technician';
 import Create_Appointment from './Create_Appointment';
 import AppointmentList from './AppointmentList';
-import CreateAutomobile from './CreateAutomobile';
 import CreateSalesPerson from './CreateSalesPerson';
 import CreateCustomer from './CreateCustomer';
 import CreateSale from './CreateSale'
