@@ -7,32 +7,29 @@ function CreateCustomer() {
     const [phone_number, setPhoneNumber] = useState('');
 
     const handleFirstNameChange = (event) => {
-        const value = event.target.value;
-        setFirstName(value);
+        setFirstName(event.target.value);
     };
 
     const handleLastNameChange = (event) => {
-        const value = event.target.value;
-        setLastName(value);
+        setLastName(event.target.value);
     };
 
     const handleAddressChange = (event) => {
-        const value = event.target.value;
-        setAddress(value);
+        setAddress(event.target.value);
     };
 
     const handlePhoneNumberChange = (event) => {
-        const value = event.target.value;
-        setPhoneNumber(value);
+        setPhoneNumber(event.target.value);
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = {};
-        data.first_name = first_name;
-        data.last_name = last_name;
-        data.address = address;
-        data.phone_number = phone_number;
+        const data = {
+            first_name,
+            last_name,
+            address,
+            phone_number
+        };
 
         const json = JSON.stringify(data);
         const url = 'http://localhost:8090/api/customers/';
@@ -44,8 +41,6 @@ function CreateCustomer() {
 
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
-            const newCustomer = await response.json();
-            console.log(newCustomer);
             setFirstName('');
             setLastName('');
             setAddress('');
@@ -54,28 +49,20 @@ function CreateCustomer() {
     };
 
     return (
-        <div className="justify-content-center align-items-center">
-            <div className='shadow p-4 mt-4'>
-                <h1>Add a customer</h1>
+    <div className="row">
+        <div className="offset-3 col-6">
+            <div className='shadow p-4 mt-4 forms'>
+                <h1>Add a Customer</h1>
                 <form onSubmit={handleSubmit}>
-                    <div className="form-floating mb-3">
-                        <input onChange={handleFirstNameChange} value={first_name} required placeholder="First name" name="first_name" id="first_name" />
-                    </div>
-                    <div className="form-floating mb-3">
-                        <input onChange={handleLastNameChange} value={last_name} required placeholder="Last name" name="last_name" id="last_name" />
-                    </div>
-                    <div className="form-floating mb-3">
-                        <input onChange={handleAddressChange} value={address} required placeholder="Address" name="address" id="address" />
-                    </div>
-                    <div className="form-floating mb-3">
-                        <input onChange={handlePhoneNumberChange} value={phone_number} required placeholder="Phone number" name="phone_number" id="phone_number" />
-                    </div>
-                    <div className="form-floating mb-3">
-                        <button className="btn btn-primary">Create</button>
-                    </div>
+                    <div className="form-floating mb-3"><input onChange={handleFirstNameChange} value={first_name} required placeholder="First Name" name="first_name" id="first_name" className="form-control" /><label htmlFor="first_name">First Name</label></div>
+                    <div className="form-floating mb-3"><input onChange={handleLastNameChange} value={last_name} required placeholder="Last Name" name="last_name" id="last_name" className="form-control" /><label htmlFor="last_name">Last Name</label></div>
+                    <div className="form-floating mb-3"><input onChange={handleAddressChange} value={address} required placeholder="Address" name="address" id="address" className="form-control" /><label htmlFor="address">Address</label></div>
+                    <div className="form-floating mb-3"><input onChange={handlePhoneNumberChange} value={phone_number} required placeholder="Phone Number" name="phone_number" id="phone_number" className="form-control" /><label htmlFor="phone_number">Phone Number</label></div>
+                    <button className="btn btn-dark">Create</button>
                 </form>
             </div>
         </div>
+    </div>
     );
 }
 

@@ -103,67 +103,54 @@ function CreateSale() {
     }
 
     return(
-        <div className="justify-content-center align-items-center">
-            <div className='shadow p-4 mt-4'>
-                <h1>Record a new sale</h1>
+        <div className="row">
+        <div className="offset-3 col-6">
+            <div className='shadow p-4 mt-4 forms'>
+                <h1>Record a New Sale</h1>
                 <form onSubmit={handleSubmit}>
-                    <div>
-                        <label>Automobile VIN</label>
-                    </div>
                     <div className="form-floating mb-3">
                         <select className="form-select" onChange={handleAutomobileChange} value={automobile} required name="automobile" id="automobile" >
-                            <option>Choose a VIN</option>
-                            {automobiles.map((automobile) => {
-                                return (
-                                    <option key={automobile.id} value={automobile.vin}>
-                                        {automobile.vin}
-                                    </option>
-                                )
-                             })}
+                            <option value="">Choose an Automobile VIN</option>
+                            {automobiles.map((auto) => (
+                                <option key={auto.id} value={auto.vin}>
+                                    {auto.vin}
+                                </option>
+                            ))}
                         </select>
-                    </div>
-                    <div>
-                        <label>Salesperson</label>
+                        <label htmlFor="automobile">Automobile VIN</label>
                     </div>
                     <div className="form-floating mb-3">
                         <select className="form-select" onChange={handleSalesPersonChange} value={salesperson} required name="salesperson" id="salesperson" >
-                            <option>Choose a salesperson</option>
-                            {salespeople.map((salesperson) => {
-                                return (
-                                    <option key={salesperson.id} value={salesperson.employee_id}>
-                                        {salesperson.first_name}
-                                    </option>
-                                )
-                             })}
+                            <option value="">Choose a Salesperson</option>
+                            {salespeople.map((sp) => (
+                                <option key={sp.id} value={sp.employee_id}>
+                                    {sp.first_name} {sp.last_name}
+                                </option>
+                            ))}
                         </select>
-                    </div>
-                    <div>
-                        <label>Customer</label>
+                        <label htmlFor="salesperson">Salesperson</label>
                     </div>
                     <div className="form-floating mb-3">
                         <select className="form-select" onChange={handleCustomerChange} value={customer} required name="customer" id="customer" >
-                            <option>Choose a customer</option>
-                            {customers.map((customer) => {
-                                return (
-                                    <option key={customer.id} value={customer.first_name}>
-                                        {customer.first_name}
-                                    </option>
-                                )
-                             })}
+                            <option value="">Choose a Customer</option>
+                            {customers.map((c) => (
+                                <option key={c.id} value={c.first_name}>
+                                    {c.first_name} {c.last_name}
+                                </option>
+                            ))}
                         </select>
-                    </div>
-                    <div>
-                        <label>Price</label>
+                        <label htmlFor="customer">Customer</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <input onChange={handlePriceChange} value={price} required name="price" id="price" />
+                        <input onChange={handlePriceChange} value={price} required placeholder="Price" name="price" id="price" className="form-control" />
+
+                        <label htmlFor="price">Price</label>
                     </div>
-                    <div className="form-floating mb-3">
-                        <button className="btn btn-primary">Create</button>
-                    </div>
+                    <button className="btn btn-dark">Record Sale</button>
                 </form>
             </div>
         </div>
+    </div>
     )
 }
 
