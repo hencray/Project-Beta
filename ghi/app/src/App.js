@@ -6,7 +6,11 @@ import CreateManufacturer from './CreateManufacturer';
 import ListModels from './ListModels';
 import CreateModel from './CreateModel';
 import ListAutomobile from './ListAutomobile';
-import CreateAutomobile from './CreateAutomobile';
+import CreateAutomobile from './CreateAutomobile'
+import Technician_list from './Technician_list'
+import Create_Technician from './Create_Technician';
+import Create_Appointment from './Create_Appointment';
+import AppointmentList from './AppointmentList';
 
 function App() {
   return (
@@ -21,6 +25,10 @@ function App() {
           <Route path="/models/create" element={<CreateModel />} />
           <Route path="/automobiles" element={<ListAutomobile/>} />
           <Route path="/automobiles/create" element={<CreateAutomobile />} />
+          <Route path="/technicians/create" element={<Create_Technician />} />
+          <Route path="/technicians" element={<Technician_list />} />
+          <Route path="/appointments/create" element={<Create_Appointment />} />
+          <Route path="/appointments/" element={<AppointmentList />} />
 
 
 
