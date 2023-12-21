@@ -7,6 +7,9 @@ import ListModels from './ListModels';
 import CreateModel from './CreateModel';
 import ListAutomobile from './ListAutomobile';
 import CreateAutomobile from './CreateAutomobile';
+import CreateSalesPerson from './CreateSalesPerson';
+import CreateCustomer from './CreateCustomer';
+import CreateSale from './CreateSale'
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
           <Route path="/models/create" element={<CreateModel />} />
           <Route path="/automobiles" element={<ListAutomobile/>} />
           <Route path="/automobiles/create" element={<CreateAutomobile />} />
+          <Route path="/salesperson/create" element={<CreateSalesPerson />} />
+          <Route path="/customer/create" element={<CreateCustomer />} />
+          <Route path="/sale/create" element={<CreateSale />} />
 
 
 

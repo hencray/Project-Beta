@@ -4,6 +4,8 @@ from common.json import ModelEncoder
 from .models import SalesPerson, Customer, AutomobileVO, Sale
 from django.http import JsonResponse
 import json
+from django.db import IntegrityError
+
 
 # Create your views here.
 
@@ -52,11 +54,14 @@ def api_list_salespeople(request):
                 {'salesperson': salesperson},
                 encoder=SalesPersonEncoder
             )
-        except:
-            return JsonResponse(
-                {'message': "Error"},
-                status=400
-            )
+        except json.JSONDecodeError:
+            return JsonResponse({'message': "Invalid JSON"}, status=400)
+        except IntegrityError as e:
+            return JsonResponse({'message': str(e)}, status=400)
+        except Exception as e:
+            # Log the exception for debugging
+            print(f"Unexpected error: {e}")
+            return JsonResponse({'message': "Error creating salesperson"}, status=500)
 
 
 # TODO: Delete a sales person
