@@ -145,7 +145,7 @@ function CreateSale() {
                             <option>Choose a customer</option>
                             {customers.map((customer) => {
                                 return (
-                                    <option key={customer.id} value={customer.id}>
+                                    <option key={customer.id} value={customer.first_name}>
                                         {customer.first_name}
                                     </option>
                                 )

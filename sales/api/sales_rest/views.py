@@ -17,7 +17,7 @@ class SalesPersonEncoder(ModelEncoder):
 # DONE: customer encoder
 class CustomerEncoder(ModelEncoder):
     model = Customer
-    properties = ['first_name', 'last_name', 'phone_number', 'address']
+    properties = ['first_name', 'last_name', 'phone_number', 'address', 'id']
 
 # DONE: automobile encoder
 class AutomobileVOEncoder(ModelEncoder):
@@ -27,7 +27,7 @@ class AutomobileVOEncoder(ModelEncoder):
 # DONE: sale encoder
 class SaleEncoder(ModelEncoder):
     model = Sale
-    properties = ['id','price','customer','salesperson','automobile']
+    properties = ['customer','salesperson','automobile', 'price', 'id']
     encoders={'customer': CustomerEncoder(), 'salesperson': SalesPersonEncoder(), 'automobile': AutomobileVOEncoder()}
 
 # TODO: List salespeople / Create salesperson
