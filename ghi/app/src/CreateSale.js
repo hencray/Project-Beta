@@ -83,16 +83,21 @@ function CreateSale() {
     data.automobile = automobile;
 
     const json = JSON.stringify(data);
+    // console.log(json)
     const url = "http://localhost:8090/api/sales/";
+    // console.log(url)
     const fetchConfig = {
       method: "POST",
       body: json,
       headers: { "Content-Type": "application/json" },
     };
+    // console.log(fetchConfig)
 
     const response = await fetch(url, fetchConfig);
+    // console.log(response)
     if (response.ok) {
       const newSale = await response.json();
+      // console.log(newSale)
       await updateAutomobileSoldStatus(automobile);
       fetchAutomobiles();
 
