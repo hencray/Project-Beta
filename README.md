@@ -72,22 +72,63 @@ CarCar is an app for managing everything in an auto dealership - from cars to sa
     - Set Status to "Canceled": `PUT http://localhost:8080/api/appointments/:id/cancel/`
     - Set Status to "Finished": `PUT http://localhost:8080/api/appointments/:id/finish/`
 
-#### Sales Microservice
-  - Tracks automobile sales, ensuring only unsold vehicles from inventory can be sold.
-  - Utilizes models like `Salesperson`, `Customer`, `Sale`, and `AutomobileVO`.
-  - Special feature 'Unsold Only' ensures sales are made only for unsold inventory items.
+### Sales Microservice (Port: 8090)
+The Sales Microservice in CarCar plays a critical role in managing automobile sales. It ensures that the dealership only sells vehicles that are not already sold, thereby maintaining inventory accuracy.
+
+#### Key Components
+- **Salesperson**: Each salesperson in the dealership is recorded with `first_name`, `last_name`, and a unique `employee_id`.
+- **Customer**: This model captures details of the buyers, including their `first_name`, `last_name`, `phone_number`, and `address`.
+- **Sale**: This record links a salesperson and a customer to a vehicle, detailing the sale transaction, including the price.
+- **AutomobileVO (Value Object)**: This model is focused on vehicle details, uniquely identified by a `vin`. Notably, the Automobile is treated as a value object in our system, defined by its attributes.
+
+#### Core Features
+- **Unsold Only Policy**: This feature ensures that sales are only processed for vehicles that are currently unsold, ensuring reliability in inventory management.
+
+#### API Endpoints
+- **Salespeople**
+  - **List (GET)**: `GET http://localhost:8090/api/salespeople/`
+  - **Create (POST)**: `POST http://localhost:8090/api/salespeople/`
+  - **Delete (DELETE)**: `DELETE http://localhost:8090/api/salespeople/:id/`
+- **Customers**
+  - **List (GET)**: `GET http://localhost:8090/api/customers/`
+  - **Create (POST)**: `POST http://localhost:8090/api/customers/`
+  - **Delete (DELETE)**: `DELETE http://localhost:8090/api/customers/:id/`
+- **Sales**
+  - **List (GET)**: `GET http://localhost:8090/api/sales/`
+  - **Create (POST)**: `POST http://localhost:8090/api/sales/`
+  - **Delete (DELETE)**: `DELETE http://localhost:8090/api/sales/:id/`
 
 
-- **API Endpoints:**
-  - **Salespeople**
-    - List: `GET http://localhost:8090/api/salespeople/`
-    - Create: `POST http://localhost:8090/api/salespeople/`
-    - Delete Specific: `DELETE http://localhost:8090/api/salespeople/:id/`
-  - **Customers**
-    - List: `GET http://localhost:8090/api/customers/`
-    - Create: `POST http://localhost:8090/api/customers/`
-    - Delete Specific: `DELETE http://localhost:8090/api/customers/:id/`
-  - **Sales**
-    - List: `GET http://localhost:8090/api/sales/`
-    - Create: `POST http://localhost:8090/api/sales/`
-    - Delete Specific: `DELETE http://localhost:8090/api/sales/:id/`
+#### Example Data Entries
+
+1. **Creating a Salesperson**
+   \```
+   POST /api/salespeople/
+   {
+     "first_name": "LeBron",
+     "last_name": "James",
+     "employee_id": "LBJ23"
+   }
+   \```
+
+2. **Adding a Customer**
+   \```
+   POST /api/customers/
+   {
+     "first_name": "Stephen",
+     "last_name": "Curry",
+     "phone_number": "800-THREE-PT",
+     "address": "30 Three Point Lane, Hoopsville, BB 1010"
+   }
+   \```
+
+3. **Recording a Sale**
+   \```
+   POST /api/sales/
+   {
+     "salesperson": "LBJ23",
+     "customer": "SC30",
+     "automobile": "VIN123456789012345",
+     "price": "60000"
+   }
+   \```
