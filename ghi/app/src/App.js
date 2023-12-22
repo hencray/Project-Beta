@@ -19,7 +19,6 @@ import ListSalesPerson from './ListSalesPerson';
 import ListCustomers from './ListCustomers';
 import ListSales from './ListSales';
 import SalesPersonHistory from './SalesPersonHistory';
-import React from 'react';
 import ServiceHistory from './ServiceHistory';
 
 function App() {

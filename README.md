@@ -56,10 +56,25 @@ CarCar is an app for managing everything in an auto dealership - from cars to sa
 
 #### Service Microservice
   - The Service microservice manages service appointments, including their creation, cancellation, and completion.
-  - Utilizes models like `Technician`, `AutomobileVO`, and `Appointment` for managing service-related data.
-  - Special features include marking appointments as "VIP" based on VIN match in inventory and maintaining service history.
+    Auto technician:
+    - "name", auto technician name, input received through form
+    - "employee_number", created through form input, references unique employee number.
+    Service Appointment:
+    - "vin", Vehicle vin.
+    - "customer_name", vehicle ownwer name.
+    - "date_time", scheduled service appointment date.
+    - "reason", reason for service appointment.
+    - "dealership_purchase", determines whether the vehicle vin for the service appointment matches inventory vehicle vin, for access to VIP treatment.
+    - "technician", the selected technician for the service appointment
+
+AutomobileVO:
+    - "Import_href", received from inventory database using poller.
+    - "color", color description of the automobile.
+    - "year", automobile year.
+    - "vin", of the vehicle in inventory.
+
   - Error handling includes returning 400 or 404 errors for unsuccessful requests or non-existent model objects.
-  
+
 - **API Endpoints:**
   - **Technicians**
     - List: `GET http://localhost:8080/api/technicians/`
@@ -79,7 +94,8 @@ The Sales Microservice in CarCar plays a critical role in managing automobile sa
 - **Salesperson**: Each salesperson in the dealership is recorded with `first_name`, `last_name`, and a unique `employee_id`.
 - **Customer**: This model captures details of the buyers, including their `first_name`, `last_name`, `phone_number`, and `address`.
 - **Sale**: This record links a salesperson and a customer to a vehicle, detailing the sale transaction, including the price.
-- **AutomobileVO (Value Object)**: This model is focused on vehicle details, uniquely identified by a `vin`. Notably, the Automobile is treated as a value object in our system, defined by its attributes.
+- **AutomobileVO (Value Object)**: This model is focused on vehicle details, uniquely identified by a `vin`. Notably, the Automobile is treated as a value object in our
+    system, defined by its attributes.
 
 #### Core Features
 - **Unsold Only Policy**: This feature ensures that sales are only processed for vehicles that are currently unsold, ensuring reliability in inventory management.
@@ -132,3 +148,35 @@ The Sales Microservice in CarCar plays a critical role in managing automobile sa
      "price": "60000"
    }
    \```
+
+4. **Create A Technician
+  \```
+  POST /api/technicians/
+  {
+	  "first_name":"Tom",
+	  "last_name":"Jones",
+	  "employee_id":"8675309"
+  }
+  \``
+
+5. **Create An Appointment
+  \```
+  POST /api/appointments/
+  {
+     "vin": "1GCEK14T9YE235215",
+     "customer": "Mike tyson",
+     "date_time": "02/20/25 2:00",
+     "reason": "Oil Change",
+     "status": "",
+      "technician": 7
+  }
+
+  \```
+6. **Finish An ApppointMent
+  POST /api/appointments/:id/finish/
+  \```
+
+  \```
+7 ** Cancel AN Appointment
+  POST /api/appointments/:id/cancel/
+  \```

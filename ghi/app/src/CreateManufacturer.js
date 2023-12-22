@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 function CreateManufacturer() {
   const [name, setName] = useState("");
 
