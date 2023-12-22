@@ -102,17 +102,17 @@ The Sales Microservice in CarCar plays a critical role in managing automobile sa
 #### Example Data Entries
 
 1. **Creating a Salesperson**
-   \
+   ```js
    POST /api/salespeople/
    {
      "first_name": "LeBron",
      "last_name": "James",
      "employee_id": "LBJ23"
    }
-   \
+   ```
 
 2. **Adding a Customer**
-   \
+   ```js
    POST /api/customers/
    {
      "first_name": "Stephen",
@@ -120,10 +120,10 @@ The Sales Microservice in CarCar plays a critical role in managing automobile sa
      "phone_number": "800-THREE-PT",
      "address": "30 Three Point Lane, Hoopsville, BB 1010"
    }
-   \
+   ```
 
 3. **Recording a Sale**
-   \
+   ```js
    POST /api/sales/
    {
      "salesperson": "LBJ23",
@@ -131,4 +131,4 @@ The Sales Microservice in CarCar plays a critical role in managing automobile sa
      "automobile": "VIN123456789012345",
      "price": "60000"
    }
-   \
+   ```
