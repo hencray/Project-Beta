@@ -18,6 +18,8 @@ import ListSalesPerson from './ListSalesPerson';
 import ListCustomers from './ListCustomers';
 import ListSales from './ListSales';
 import SalesPersonHistory from './SalesPersonHistory';
+import React from 'react';
+import ServiceHistory from './ServiceHistory';
 
 function App() {
   return (
@@ -44,6 +46,7 @@ function App() {
           <Route path="/sale" element={<ListSales />} />
           <Route path="/sale/create" element={<CreateSale />} />
           <Route path="/sale/history" element={<SalesPersonHistory />} />
+          <Route path="/servicehistory/" element={<ServiceHistory />} />
 
 
         </Routes>

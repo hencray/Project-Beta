@@ -13,7 +13,7 @@ class Technician(models.Model):
 
 class Appointment(models.Model):
     vin = models.CharField(max_length=17)
-    customer = models.CharField(max_length=100)  
+    customer = models.CharField(max_length=100)
     date_time = models.CharField(max_length=20)
     reason = models.CharField(max_length=100)
     dealership_purchase = models.BooleanField(default=False)
@@ -22,7 +22,9 @@ class Appointment(models.Model):
     technician = models.ForeignKey(
         Technician,
         related_name="ServiceAppointment",
-        on_delete=models.CASCADE
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
     )
 
     class Meta:
