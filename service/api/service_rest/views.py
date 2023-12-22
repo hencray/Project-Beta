@@ -100,7 +100,7 @@ def api_Appointments_list(request):
             technician = {"technician": Technician.objects.get(id=content["technician"])}
             content.update(technician)
 
-            # Check if the date_time and technician combination already exists for the customer
+           
             existing_appointment = Appointment.objects.filter(
                 customer=content.get("customer"),
                 date_time=content.get("date_time"),
