@@ -6,28 +6,21 @@ from django.http import JsonResponse
 import json
 
 
-# Create your views here.
-
-
-# DONE: salesperson econder
 class SalesPersonEncoder(ModelEncoder):
     model = SalesPerson
     properties = ["first_name", "last_name", "employee_id", "id"]
 
 
-# DONE: customer encoder
 class CustomerEncoder(ModelEncoder):
     model = Customer
     properties = ["first_name", "last_name", "phone_number", "address", "id"]
 
 
-# DONE: automobile encoder
 class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = ["vin", "sold"]
 
 
-# DONE: sale encoder
 class SaleEncoder(ModelEncoder):
     model = Sale
     properties = ["customer", "salesperson", "automobile", "price", "id"]
@@ -38,7 +31,6 @@ class SaleEncoder(ModelEncoder):
     }
 
 
-# TODO: List salespeople / Create salesperson
 @require_http_methods(["GET", "POST"])
 def api_list_salespeople(request):
     if request.method == "GET":
@@ -60,7 +52,6 @@ def api_list_salespeople(request):
             return JsonResponse({"message": "Error"}, status=400)
 
 
-# TODO: Delete a sales person
 @require_http_methods(["GET", "DELETE"])
 def api_sales_person_detail(request, id):
     if request.method == "GET":
@@ -79,7 +70,6 @@ def api_sales_person_detail(request, id):
             return JsonResponse({"message": "Error"}, status=400)
 
 
-# TODO: list customers / create customer
 @require_http_methods(["GET", "POST"])
 def api_list_customers(request):
     if request.method == "GET":
@@ -97,7 +87,6 @@ def api_list_customers(request):
             return JsonResponse({"message": "Error"}, status=400)
 
 
-# TODO: delete specific customer
 @require_http_methods(["GET", "DELETE"])
 def api_customer_details(request, id):
     if request.method == "GET":
@@ -114,7 +103,6 @@ def api_customer_details(request, id):
             return JsonResponse({"message": "Error"}, status=400)
 
 
-# TODO: list sales / create sales
 @require_http_methods(["GET", "POST"])
 def api_list_sales(request):
     if request.method == "GET":
@@ -153,7 +141,6 @@ def api_list_sales(request):
         return JsonResponse({"sale": sale}, encoder=SaleEncoder)
 
 
-# TODO: deleta a specific sale
 @require_http_methods(["GET", "DELETE"])
 def api_sales_detail(request, id):
     if request.method == "GET":
